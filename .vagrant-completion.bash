@@ -113,7 +113,7 @@ _vagrant() {
                 return 0
                 ;;
             "snapshot")
-                snapshot_commands="back delete go list take"
+                snapshot_commands="delete list pop push restore save"
                 COMPREPLY=($(compgen -W "${snapshot_commands}" -- ${cur}))
                 return 0
                 ;;
@@ -143,11 +143,14 @@ _vagrant() {
               esac
               ;;
           "snapshot")
-              if [ "$prev" == "go" ]; then
-                  local snapshot_list=$(vagrant snapshot list | awk '/Name:/ { print $2 }')
-                  COMPREPLY=($(compgen -W "${snapshot_list}" -- ${cur}))
-                  return 0
-              fi
+              case "$prev" in
+                  "restore"|"delete")
+                      local snapshot_list=$(vagrant snapshot list | awk '/Name:/ { print $2 }')
+                      COMPREPLY=($(compgen -W "${snapshot_list}" -- ${cur}))
+                      return 0
+                      ;;
+                  *)
+              esac
               ;;
       esac
     fi
