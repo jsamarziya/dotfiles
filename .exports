@@ -26,3 +26,6 @@ export CLICOLOR_FORCE=1
 export PAGER='less -isF'
 export LESS='-egimqXR'
 export EXINIT='se ai terse nowarn sm'
+
+export SHELL_SESSION_HISTORY=0
+
