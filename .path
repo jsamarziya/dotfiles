@@ -1,0 +1,5 @@
+[ -d "${HOME}/bin" ] && export PATH="$HOME/bin:$PATH"
+
+# MacPorts
+[ -d "/opt/local/bin" ] && export PATH="/opt/local/bin:$PATH"
+[ -d "/opt/local/sbin" ] && export PATH="/opt/local/sbin:$PATH"
