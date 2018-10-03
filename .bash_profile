@@ -41,3 +41,8 @@ FIGNORE="CVS:.svn"
 [ -r /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion ] && [ -f /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion ] && source /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion
 [ -r /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion ] && [ -f /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion ] && source /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion
 [ -r /Applications/Docker.app/Contents/Resources/etc/docker-machine.bash-completion ] && [ -f /Applications/Docker.app/Contents/Resources/etc/docker-machine.bash-completion ] && source /Applications/Docker.app/Contents/Resources/etc/docker-machine.bash-completion
+
+# Bash completion (macports)
+if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+    . /opt/local/etc/profile.d/bash_completion.sh
+fi
