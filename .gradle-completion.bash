@@ -16,8 +16,8 @@ _gradle()
   mkdir -p $cache_dir
 
   # TODO: include the gradle version in the checksum?  It's kinda slow
-  #local gradle_version=$($gradle_cmd --version --quiet --no-color | grep '^Gradle ' | sed 's/Gradle //g')
-  
+  #local gradle_version=$($gradle_cmd --version --quiet --console=plain | grep '^Gradle ' | sed 's/Gradle //g')
+
   local gradle_files_checksum='';
   if [[ -f build.gradle ]]; then # top-level gradle file
     if [[ -x `which md5 2> /dev/null` ]]; then # mac
@@ -32,7 +32,7 @@ _gradle()
   if [[ -f $cache_dir/$gradle_files_checksum ]]; then # cached! yay!
     commands=$(cat $cache_dir/$gradle_files_checksum)
   else # not cached! boo-urns!
-    commands=$($gradle_cmd --no-color --quiet tasks | grep ' - ' | awk '{print $1}' | tr '\n' ' ')
+    commands=$($gradle_cmd --console=plain --quiet tasks | grep ' - ' | awk '{print $1}' | tr '\n' ' ')
     if [[ ! -z $commands ]]; then
       echo $commands > $cache_dir/$gradle_files_checksum
     fi
