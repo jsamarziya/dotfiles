@@ -22,7 +22,7 @@ for option in autocd globstar; do
 	shopt -s "$option" 2> /dev/null
 done
 
-umask 022
+umask 077
 
 # no core files
 ulimit -c 0
