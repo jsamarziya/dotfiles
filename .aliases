@@ -2,7 +2,6 @@
 
 case "$OSTYPE" in
     darwin*)
-        alias e='open -t'
         ;;
     *)
         alias e='vi'
