@@ -29,3 +29,17 @@ if command -v dig > /dev/null; then
         dig +nocmd "$1" any +multiline +noall +answer;
     }
 fi
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    function e() {
+        if [[ ! -e "$@" ]]; then
+            read -p "The file $@ does not exist. Create it [Y/n]? " yn
+            if [[ $yn == [Yy]* || $yn == "" ]]; then
+                touch "$@"
+            else
+                return
+            fi
+        fi
+        open -t "$@"
+    }
+fi
