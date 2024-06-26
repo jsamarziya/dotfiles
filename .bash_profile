@@ -46,3 +46,7 @@ FIGNORE="CVS:.svn"
 if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
     . /opt/local/etc/profile.d/bash_completion.sh
 fi
+
+if command -v keychain > /dev/null; then
+    eval `keychain --quiet --eval`
+fi
